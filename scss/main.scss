@@ -1,0 +1,474 @@
+@import "./variables";
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap');
+
+
+
+@mixin size($w: 100%, $h: 100%)
+{
+    width: $w;
+    height: $h;
+}
+
+@mixin flex ($direction)
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: $direction;
+}
+@mixin adjust-left {
+    position: relative;
+    right: 3.1rem;
+}
+@mixin font-resize {
+    font-weight: $small-font;
+    color: $primaryColor;
+}
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+    font:
+    {
+        family: 'Outfit', sans-serif;
+        size: 1.2rem;
+    }
+}
+body
+{
+    background-color: $main-color;
+    @include size(100vw, 100vh);
+}
+
+main{
+    @include size;
+    @include flex(column)
+}
+.container{
+    @include flex(column);
+    @include size(20rem,30rem);
+    border-radius: $border-radius;
+    gap: $gap;
+    background-color: $card-color;
+    box-shadow: 0 20px 10px 20px $cardShadow;
+    .equilibrium-img
+    {
+        @include size(18.5rem, 18.5rem);
+
+        img
+        {
+            @include size;
+            border-radius: $border-radius;
+        }
+    }
+    .main-heading{
+        h1{
+            @include adjust-left;
+            font-weight: $large-font;
+            font-size: 1.4rem;
+            color: white;
+        }
+    }
+    .main-para{
+        p{
+            @include font-resize;
+            position: relative;
+            left: 1.4rem;
+            padding-right: 1.6rem;
+            font-size: 1.2rem
+        }
+    }
+    .icon-area{
+        @include flex(row);
+        gap: 5rem;
+        position: relative;
+        right: .55rem;
+        .icon-1{
+            color: $linkColor;
+        }
+        .icon-2{
+            color: $primaryColor;
+        }
+    }
+    .hr-color{
+        color: $primaryColor;
+        width: 83%;
+        opacity: 0.5;
+    }
+    .avatar-img-text{
+        @include flex(row);
+        .avatar-img {
+  
+            img{
+                border: 4px solid white;
+                border-radius: 50%;
+                width: 2.8rem;
+                height: 2.8rem;
+                position: relative;
+                right:1.5rem;
+            }
+            
+        }
+        .avatar-texts{
+            .avatar-text-1{
+                @include font-resize;
+            }
+            .avatar-text-2{
+                font-weight: $small-font;
+                color: white;
+            }
+        }
+    }
+}
+footer{
+    display: none;
+    margin-top: 4rem;
+    @include flex(row);
+    .attribution,a{
+        color: white;
+    }
+    a{
+        text-decoration: none;
+    }
+}
+
+@media(max-width:470px){
+    .container{
+
+        @include size(16rem,30rem);
+        .equilibrium-img
+        {
+            @include size(14rem, 14rem);
+        }    
+    .main-heading{
+        h1{
+            font-size: 1rem;
+            position: relative;
+            left: -2rem;
+        }
+    }
+    .main-para{
+        p{
+            font-size: .8rem
+        }
+    }
+}
+.icon-area{
+    left: 1rem;
+}
+.icon-text-1,.icon-text-2{
+    font-size: .8rem;
+}
+.icon-2{
+    position: relative;
+    right: 2rem;
+}
+
+.avatar-img-text{
+    .avatar-img {
+        position: relative;
+        left:.9rem;
+        img{
+            border: 2.4px solid white;
+            width: 2rem;
+            height: 2rem;
+        }
+        
+    }
+    .avatar-texts{
+        .avatar-text-1,.avatar-text-2{
+            font-size: .8rem;
+        }
+        
+    }
+}
+footer{
+    display: block;
+}
+
+}
+
+
+// @mixin center
+// {
+//     position: absolute;
+//     top: 50%;
+//     left: 50%;
+//     transform: translate(-50%, -50%)    
+// }
+
+// // For mobile phones:
+//
+
+
+
+// .card
+// {
+//     background-color: $cardBG;
+//     border-radius: 15px;
+//     
+
+//     @include size(327px, 543px);
+//     padding: 24px;
+
+//     @include flex(column, 24px);
+// }
+
+// // 카드 이미지
+// 
+
+//     // 카드 오버레이
+//     
+//     .view-img
+//     {
+//         @include center;
+
+//         position: absolute;
+//         bottom: 0;
+
+//         opacity: 0;
+//     }
+// }
+
+// .img-container:hover .overlay
+// {
+//     opacity: 0.5;
+// }
+
+// .img-container:hover .view-img
+// {
+//     opacity: 1;
+// }
+
+// // 카드 텍스트
+// .card-text
+// {
+//     @include size(100%, 192px);
+//     @include flex(column, 12px);
+
+//     // 제목
+//     .header
+//     {
+//         @include size(100%, 30px);
+        
+//         a
+//         {
+//             color: $textColor;
+//             font: 
+//             {
+//                 size: 22px;
+//                 weight: 600;
+//             };
+            
+//             text-decoration: none;
+//         }
+
+//         a:hover
+//         {
+//             color: $linkColor;
+//         }
+//     }
+
+//     // 내용
+//     .card-detail
+//     {
+//         @include size(100%, 50px);
+
+//         color: $primaryColor;
+//         font:
+//         {
+//             size: 16px;
+//             weight: 300;
+//         }
+//         line-height: 26px;
+//     }
+
+//     // 정보
+//     .card-info
+//     {
+//         @include size(100%, 24px);
+//         @include flex(row, 0px);
+
+//         align-items: center;
+//         justify-content: space-between;
+            
+//         // 돈
+//         .cost
+//         {
+//             color: $linkColor;
+
+//             font: 
+//             {
+//                 size: 16px;
+//                 weight: 600;
+//             };
+
+//             @include flex(row, 6px);
+//             align-items: center;
+//         }
+
+//         // 시간
+//         .left-time
+//         {
+//             color: $primaryColor;
+
+//             @extend .cost;
+
+//             font-weight: 400;
+//         }
+//     }
+    
+//     // 유저 정보
+//     .user-info-container
+//     {
+//         @include size(100%, 52px);
+
+//         border-top: 1px solid $line;
+
+//         .user-info
+//         {
+//             @include size(100%, 36px);
+
+//             color: $primaryColor;
+
+//             margin-top: 16px;
+
+//             @include flex(row, 16px);
+//             align-items: center;
+
+//             img
+//             {
+//                 width : 32px;
+//                 height: 32px;
+
+//                 border: 1px solid $textColor;
+//                 border-radius: 50%;
+//             }
+
+//             p
+//             {
+//                 font:
+//                 {
+//                     weight: 400;
+//                     size: 16px;
+//                 }
+//             }
+
+//             a
+//             {
+//                 @extend p;
+
+//                 color: $textColor;
+
+//                 text-decoration: none;
+//             }
+
+//             a:hover
+//             {
+//                 color: $linkColor;
+//             }
+//         }
+//     }
+// }
+
+// // attribution
+// .attribution 
+// {
+//     text-align: center;
+
+//     position: absolute;
+//     bottom: 0;
+//     left: 50%;
+//     transform: translateX(-50%);
+
+//     p
+//     {
+//         font:
+//         {
+//             size: 11px;
+//             weight: 300;
+//         }
+
+//         color: $textColor;
+//     }
+
+//     a
+//     {
+//         @extend p;
+
+//         text-decoration: none;
+//         color: $primaryColor;
+//     }
+
+//     a:hover
+//     {
+//         color: hsl(15, 52%, 70%);
+//     }
+// }
+
+// @media only screen and (max-height: 600px)
+// {
+//     .attribution
+//     {
+//         display: none;
+//     }
+// }
+
+// @media only screen and (min-width: 375px)
+// {
+//     // For desktop:
+//     .card
+//     {
+//         @include size(352px, 596px);
+//         padding: 26px;
+
+//         gap: 26px;
+//     }
+
+//     .img-container
+//     {
+//         height: 300px;
+//     }
+
+//     .card-text
+//     {
+//         height: 220px;
+
+//         gap: 18px;
+
+//         .card-detail
+//         {
+//             font-size: 18px;
+//         }
+
+//         .user-info-container
+//         {
+//             height: 62px;
+
+//             .user-info
+//             {
+//                 height: 44px;
+                
+//                 margin-top: 18px;
+//             }
+//         }
+//     }
+
+//     @media only screen and (max-height: 650px)
+//     {
+//         .attribution
+//         {
+//             display: none;
+//         }
+//     }
+// }
+
+// @media only screen and (max-width: 300px)
+// {
+//     .attribution
+//     {
+//         display: none;
+//     }
+// }
